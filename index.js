@@ -54,7 +54,7 @@ const socketMessage = (fn, status, data) => ({
   status,
   data,
 });
-
+                  
 // GetQR returns auth request
 async function getAuthQr(req, res) {
   const sessionId = req.query.sessionId;
@@ -121,11 +121,6 @@ async function handleVerification(req, res) {
   const resolvers = {
     ["polygon:mumbai"]: ethStateResolver,
   };
-
-  // Locate the directory that contains circuit's verification keys
-  //const verificationKeyloader = new loaders.FSKeyLoader(keyDIR);
-  //const sLoader = new loaders.UniversalSchemaLoader("ipfs.io");
-  //const verifier = new auth.Verifier(verificationKeyloader, sLoader, resolvers);
 
   const verifier = await auth.Verifier.newVerifier({
     stateResolver: resolvers,
